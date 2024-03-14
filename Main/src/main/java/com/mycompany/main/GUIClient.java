@@ -1,13 +1,31 @@
 package com.mycompany.main;
 
+import com.mycompany.main.DLL.GenrePlaylist;
+import com.mycompany.main.Stack.LikedSongs;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 /**
  * @author Michal Babik
  */
 public class GUIClient extends javax.swing.JFrame {
+    
+    // Our liked songs stack
+    LikedSongs likedSongs = new LikedSongs();
+    
+    // Set up for the JList - reference https://stackoverflow.com/questions/8252440/adding-items-to-a-jlist-from-arraylist-using-defaultlistmodel
+    DefaultListModel<String> likedSongDisplay = new DefaultListModel<>();
+    DefaultListModel<String> genreADisplay = new DefaultListModel<>();
+    DefaultListModel<String> genreBDisplay = new DefaultListModel<>();
+
+    // Limiting to two playlist only
+    GenrePlaylist genreAPlaylist = new GenrePlaylist("Pop");
+    GenrePlaylist genreBPlaylist = new GenrePlaylist("Pop");
 
     public GUIClient() {
+        
         initComponents();
-
+       
         this.setLocationRelativeTo(null);
 
         likeSongsPanel.setVisible(false);
@@ -16,13 +34,11 @@ public class GUIClient extends javax.swing.JFrame {
         genreBPlaylistJList.setVisible(false);
         addSongsGenreBtn.setVisible(false);
         showSizeLikedListBtn.setVisible(false);
-
         searchGenreABtn.setVisible(false);
         deleteGenreABtn.setVisible(false);
         displayGenreABtn.setVisible(false);
         moveTopGenreABtn.setVisible(false);
         moveBotoomGenreABtn.setVisible(false);
-
         searchGenreBBtn.setVisible(false);
         deleteGenreBBtn.setVisible(false);
         showSizeGenreBBtn.setVisible(false);
@@ -34,6 +50,11 @@ public class GUIClient extends javax.swing.JFrame {
         searchInputGenreB.setVisible(false);
         showSizeGenreABtn.setVisible(false);
         displayGenreBBtn.setVisible(false);
+
+        likedSongsList.setModel(likedSongDisplay);
+        genreAdisplay.setModel(genreADisplay);
+        genreBdisplay.setModel(genreBDisplay);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -422,28 +443,93 @@ public class GUIClient extends javax.swing.JFrame {
     }//GEN-LAST:event_createPlaylistBtnActionPerformed
 
     private void addSongBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSongBtnActionPerformed
-
+        // First we need to extract the inputs from the user and wrapp them
+        String artistName = artistNameInput.getText();
+        String songTitle = artistTitleInput.getText();
+        String genre = (String)artistGenreInput.getSelectedItem();
+        
+        // Then we need to create a song and pass those extracted inputs
+        Song song = new Song(artistName, songTitle, genre);
+        
+        // Then we can add the new song to the stack.
+        likedSongs.addSong(song);
+        
+        // We want to display the song in the JList thats define in the GUI
+        likedSongDisplay.addElement(song.toString());
+        
+        // Once the song is added to the JList model we can reset the input fields
+        artistNameInput.setText("");
+        artistTitleInput.setText("");
     }//GEN-LAST:event_addSongBtnActionPerformed
 
     private void addSongsGenreBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSongsGenreBtnActionPerformed
-
+        
+        // Adding songs from the stack to the two Genre playlist
+        // Need to check wether the stack has any elements
+        if(!likedSongs.isEmpty()){
+            // Then we can remove the last element
+            Song last = likedSongs.pop();
+            
+            // When its removed we want to display it in the JList depedning on the genre of the song
+            if(last.getGenre().equals("Pop")){
+                genreAPlaylist.addSong(last);
+                
+                // Then we can update the Jlist
+                genreADisplay.addElement(last.toString());
+            } else if (last.getGenre().equals("Rap")){
+                genreBPlaylist.addSong(last);
+                
+                // Then we can update the Jlist
+                genreBDisplay.addElement(last.toString());
+            }
+            
+            // Once its reflected in either genre playlist we can removed it from the liked songs JList
+            likedSongDisplay.removeElement(last.toString());
+        }
     }//GEN-LAST:event_addSongsGenreBtnActionPerformed
 
     private void showSizeLikedListBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showSizeLikedListBtnActionPerformed
-
+        int size = likedSongs.size();
+        
+        // Alerting user with JOptionPane message window
+        JOptionPane.showMessageDialog(null, "The size of the liked songs playlist is: " + size);
     }//GEN-LAST:event_showSizeLikedListBtnActionPerformed
 
     private void searchGenreABtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchGenreABtnActionPerformed
-
+       // First we want to get the input
+       String artistName = searchInputGenreA.getText();
+       
+       // Then we want to search for that artist in our DLL
+       Song song = genreAPlaylist.search(artistName);
+       
+       // If we find the song we print it
+       if(song != null){
+           JOptionPane.showMessageDialog(null, "Artist found: " + song.getArtist() + "\n" + "Song title: " + song.getTitle() + "\n" + "Genre: " + song.getGenre());
+           // Reset the input field
+           searchInputGenreA.setText("");
+       } else {
+           JOptionPane.showMessageDialog(null, "Artist not foun");
+           searchInputGenreA.setText("");
+       }
     }//GEN-LAST:event_searchGenreABtnActionPerformed
 
     private void searchGenreBBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchGenreBBtnActionPerformed
-
+        // First we want to get the input
+       String artistName = searchInputGenreB.getText();
+       
+       // Then we want to search for that artist in our DLL
+       Song song = genreBPlaylist.search(artistName);
+       
+       // If we find the song we print it
+       if(song != null){
+           JOptionPane.showMessageDialog(null, "Artist found: " + song.getArtist() + "\n" + "Song title: " + song.getTitle() + "\n" + "Genre: " + song.getGenre());
+           // Reset the input field
+           searchInputGenreB.setText("");
+       } else {
+           JOptionPane.showMessageDialog(null, "Artist not foun");
+           searchInputGenreB.setText("");
+       }
     }//GEN-LAST:event_searchGenreBBtnActionPerformed
-
-    private void showSizeGenreBBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showSizeGenreBBtnActionPerformed
-
-    }//GEN-LAST:event_showSizeGenreBBtnActionPerformed
 
     private void deleteGenreABtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteGenreABtnActionPerformed
 
@@ -454,16 +540,30 @@ public class GUIClient extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteGenreBBtnActionPerformed
 
     private void showSizeGenreABtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showSizeGenreABtnActionPerformed
-
+        int size = genreAPlaylist.getSongCount();
+        
+        // Alerting user with JOptionPane message window
+        JOptionPane.showMessageDialog(null, "The size of the Pop songs playlist is: " + size);
     }//GEN-LAST:event_showSizeGenreABtnActionPerformed
 
     private void displayGenreABtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayGenreABtnActionPerformed
-
+        String songs = genreAPlaylist.displaySongs();
+        
+        JOptionPane.showMessageDialog(null, songs);
     }//GEN-LAST:event_displayGenreABtnActionPerformed
 
     private void displayGenreBBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayGenreBBtnActionPerformed
-
+        String songs = genreBPlaylist.displaySongs();
+        
+        JOptionPane.showMessageDialog(null, songs);
     }//GEN-LAST:event_displayGenreBBtnActionPerformed
+
+    private void showSizeGenreBBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showSizeGenreBBtnActionPerformed
+        int size = genreBPlaylist.getSongCount();
+        
+        // Alerting user with JOptionPane message window
+        JOptionPane.showMessageDialog(null, "The size of the Pop songs playlist is: " + size);
+    }//GEN-LAST:event_showSizeGenreBBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSongBtn;

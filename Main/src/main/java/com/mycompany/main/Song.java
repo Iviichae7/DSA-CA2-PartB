@@ -5,6 +5,8 @@ package com.mycompany.main;
  */
 
 public class Song {
+    
+    // Song attributes
     private String title;
     private String artist;
     private String genre;
@@ -16,9 +18,15 @@ public class Song {
     }
 
     // Getters
-    public String getTitle() { return title; }
-    public String getArtist() { return artist; }
-    public String getGenre() { return genre; }
+    public String getTitle() { 
+        return title; 
+    }
+    public String getArtist() { 
+        return artist; 
+    }
+    public String getGenre() { 
+        return genre; 
+    }
     
     @Override
     public String toString() {
