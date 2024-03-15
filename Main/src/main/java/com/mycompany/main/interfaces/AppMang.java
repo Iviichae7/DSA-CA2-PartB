@@ -14,4 +14,5 @@ public interface AppMang {
     Song search(String artistName);
     void moveToTop();
     void moveToBottom();
+    String getCurrentAndNextSong();
 }

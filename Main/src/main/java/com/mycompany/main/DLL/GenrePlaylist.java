@@ -182,4 +182,15 @@ public class GenrePlaylist implements AppMang {
         // Then we need to save the next pointer of the saved head node to nothing
         node.next = null;
     }
+
+    @Override
+    public String getCurrentAndNextSong() {
+        if(head != null && head.next != null){
+            return "Now playing: " + head.song.getTitle() + " by " + head.song.getArtist() + " -  Next playing: " + head.next.song.getTitle() + " by " + head.next.song.getArtist();
+        } else if(head != null){
+            return "Now playing: " + head.song.getTitle() + " by " + head.song.getArtist();
+        } else {
+            return "No songs in the playlist.";
+        }
+    }
 }
