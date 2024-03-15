@@ -61,4 +61,9 @@ public class LikedSongs implements AppMang, SongMang {
     public int size() {
         return size;
     }
+
+    @Override
+    public void deleteLastSong() {
+        return;
+    }
 }
