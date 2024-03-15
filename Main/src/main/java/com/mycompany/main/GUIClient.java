@@ -1,6 +1,7 @@
 package com.mycompany.main;
 
 import com.mycompany.main.DLL.GenrePlaylist;
+import com.mycompany.main.DLL.Node;
 import com.mycompany.main.Stack.LikedSongs;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -20,7 +21,7 @@ public class GUIClient extends javax.swing.JFrame {
 
     // Limiting to two playlist only
     GenrePlaylist genreAPlaylist = new GenrePlaylist("Pop");
-    GenrePlaylist genreBPlaylist = new GenrePlaylist("Pop");
+    GenrePlaylist genreBPlaylist = new GenrePlaylist("Rap");
 
     public GUIClient() {
         
@@ -276,6 +277,11 @@ public class GUIClient extends javax.swing.JFrame {
         moveTopGenreABtn.setForeground(new java.awt.Color(255, 255, 255));
         moveTopGenreABtn.setText("MoveTop");
         moveTopGenreABtn.setBorderPainted(false);
+        moveTopGenreABtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moveTopGenreABtnActionPerformed(evt);
+            }
+        });
         mainPanel.add(moveTopGenreABtn);
         moveTopGenreABtn.setBounds(640, 600, 100, 22);
 
@@ -344,6 +350,11 @@ public class GUIClient extends javax.swing.JFrame {
         moveTopGenreBBtn.setForeground(new java.awt.Color(255, 255, 255));
         moveTopGenreBBtn.setText("MoveTop");
         moveTopGenreBBtn.setBorderPainted(false);
+        moveTopGenreBBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moveTopGenreBBtnActionPerformed(evt);
+            }
+        });
         mainPanel.add(moveTopGenreBBtn);
         moveTopGenreBBtn.setBounds(640, 810, 100, 22);
 
@@ -532,11 +543,25 @@ public class GUIClient extends javax.swing.JFrame {
     }//GEN-LAST:event_searchGenreBBtnActionPerformed
 
     private void deleteGenreABtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteGenreABtnActionPerformed
-
+        // First we Delete the last song from the dll
+        genreAPlaylist.deleteLastSong();
+        
+        // Then we can remove it from the JList
+        // First we check if its empty or not
+        if(!genreADisplay.isEmpty()){
+            genreADisplay.removeElementAt(genreADisplay.getSize() - 1);
+        }
     }//GEN-LAST:event_deleteGenreABtnActionPerformed
 
     private void deleteGenreBBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteGenreBBtnActionPerformed
-
+        // First we Delete the last song from the dll
+        genreBPlaylist.deleteLastSong();
+        
+        // Then we can remove it from the JList
+        // First we check if its empty or not
+        if(!genreBDisplay.isEmpty()){
+            genreBDisplay.removeElementAt(genreBDisplay.getSize() - 1);
+        }
     }//GEN-LAST:event_deleteGenreBBtnActionPerformed
 
     private void showSizeGenreABtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showSizeGenreABtnActionPerformed
@@ -560,10 +585,44 @@ public class GUIClient extends javax.swing.JFrame {
 
     private void showSizeGenreBBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showSizeGenreBBtnActionPerformed
         int size = genreBPlaylist.getSongCount();
-        
         // Alerting user with JOptionPane message window
         JOptionPane.showMessageDialog(null, "The size of the Pop songs playlist is: " + size);
     }//GEN-LAST:event_showSizeGenreBBtnActionPerformed
+
+    private void moveTopGenreABtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveTopGenreABtnActionPerformed
+        // Manipulate the DLL to move the last elemnt to the top
+        genreAPlaylist.moveToTop();
+
+        // Clear the content of the JList
+        genreADisplay.clear();
+
+        Node node = genreAPlaylist.getHead();
+        
+        while (node != null) {
+            // Add the song to the playlist
+            genreADisplay.addElement(node.getSong().toString());
+            
+            // Move to the next playlist 
+            node = node.getNext();
+        }
+    }//GEN-LAST:event_moveTopGenreABtnActionPerformed
+
+    private void moveTopGenreBBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveTopGenreBBtnActionPerformed
+        // Manipulate the DLL to move the last elemnt to the top
+        genreBPlaylist.moveToTop();
+
+        // Clear the content of the JList
+        genreBDisplay.clear();
+
+        Node node = genreBPlaylist.getHead();
+        // Iterate over the DLL
+        while (node != null) {
+            // Add the song to the playlist JList
+            genreBDisplay.addElement(node.getSong().toString());
+            // Move to the next node if node next is not null 
+            node = node.getNext();
+        }
+    }//GEN-LAST:event_moveTopGenreBBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSongBtn;

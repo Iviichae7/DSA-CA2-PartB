@@ -10,4 +10,5 @@ public interface AppMang {
     void addSong(Song song);
     String displaySongs();
     int getSongCount();
+    void deleteLastSong();
 }
