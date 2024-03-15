@@ -243,6 +243,11 @@ public class GUIClient extends javax.swing.JFrame {
         moveBotoomGenreABtn.setBorderPainted(false);
         moveBotoomGenreABtn.setDefaultCapable(false);
         moveBotoomGenreABtn.setFocusable(false);
+        moveBotoomGenreABtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moveBotoomGenreABtnActionPerformed(evt);
+            }
+        });
         mainPanel.add(moveBotoomGenreABtn);
         moveBotoomGenreABtn.setBounds(640, 630, 100, 22);
 
@@ -459,6 +464,11 @@ public class GUIClient extends javax.swing.JFrame {
         String songTitle = artistTitleInput.getText();
         String genre = (String)artistGenreInput.getSelectedItem();
         
+        if(artistName.isEmpty() || songTitle.isEmpty() || genre == null || genre.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Nothing to add to the Stack!");
+            return;
+        }
+        
         // Then we need to create a song and pass those extracted inputs
         Song song = new Song(artistName, songTitle, genre);
         
@@ -519,7 +529,7 @@ public class GUIClient extends javax.swing.JFrame {
            // Reset the input field
            searchInputGenreA.setText("");
        } else {
-           JOptionPane.showMessageDialog(null, "Artist not foun");
+           JOptionPane.showMessageDialog(null, "Artist not found!");
            searchInputGenreA.setText("");
        }
     }//GEN-LAST:event_searchGenreABtnActionPerformed
@@ -537,7 +547,7 @@ public class GUIClient extends javax.swing.JFrame {
            // Reset the input field
            searchInputGenreB.setText("");
        } else {
-           JOptionPane.showMessageDialog(null, "Artist not foun");
+           JOptionPane.showMessageDialog(null, "Artist not found!");
            searchInputGenreB.setText("");
        }
     }//GEN-LAST:event_searchGenreBBtnActionPerformed
@@ -623,6 +633,23 @@ public class GUIClient extends javax.swing.JFrame {
             node = node.getNext();
         }
     }//GEN-LAST:event_moveTopGenreBBtnActionPerformed
+
+    private void moveBotoomGenreABtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveBotoomGenreABtnActionPerformed
+        // Manipulate the DLL to move the top elemnt to the bottom
+        genreAPlaylist.moveToBottom();
+        
+        // Clear the content of the JList
+        genreADisplay.clear();
+        
+        Node node = genreAPlaylist.getHead();
+        // Iterate over the DLL
+        while (node != null) {
+            // Add the song to the playlist JList
+            genreADisplay.addElement(node.getSong().toString());
+            // Move to the next node if node next is not null 
+            node = node.getNext();
+        }
+    }//GEN-LAST:event_moveBotoomGenreABtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSongBtn;
