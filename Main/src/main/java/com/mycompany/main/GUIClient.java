@@ -97,6 +97,8 @@ public class GUIClient extends javax.swing.JFrame {
         searchInputGenreB = new javax.swing.JTextField();
         showSizeGenreABtn = new javax.swing.JButton();
         displayGenreBBtn = new javax.swing.JButton();
+        songPlayingLabelGenreA = new javax.swing.JLabel();
+        songPlayingLabelGenreB = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -321,6 +323,11 @@ public class GUIClient extends javax.swing.JFrame {
         moveBotoomGenreBBtn.setForeground(new java.awt.Color(255, 255, 255));
         moveBotoomGenreBBtn.setText("MoveBottom");
         moveBotoomGenreBBtn.setBorderPainted(false);
+        moveBotoomGenreBBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moveBotoomGenreBBtnActionPerformed(evt);
+            }
+        });
         mainPanel.add(moveBotoomGenreBBtn);
         moveBotoomGenreBBtn.setBounds(640, 840, 100, 22);
 
@@ -418,6 +425,14 @@ public class GUIClient extends javax.swing.JFrame {
         mainPanel.add(displayGenreBBtn);
         displayGenreBBtn.setBounds(160, 810, 90, 23);
 
+        songPlayingLabelGenreA.setForeground(new java.awt.Color(0, 204, 51));
+        mainPanel.add(songPlayingLabelGenreA);
+        songPlayingLabelGenreA.setBounds(60, 640, 470, 20);
+
+        songPlayingLabelGenreB.setForeground(new java.awt.Color(0, 204, 0));
+        mainPanel.add(songPlayingLabelGenreB);
+        songPlayingLabelGenreB.setBounds(60, 850, 470, 20);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -455,6 +470,9 @@ public class GUIClient extends javax.swing.JFrame {
         searchArtistLabelGenreA.setVisible(true);
         showSizeGenreABtn.setVisible(true);
         displayGenreBBtn.setVisible(true);
+
+        songPlayingLabelGenreA.setText("No songs in the playlist.");
+        songPlayingLabelGenreB.setText("No songs in the playlist.");
 
     }//GEN-LAST:event_createPlaylistBtnActionPerformed
 
@@ -507,6 +525,9 @@ public class GUIClient extends javax.swing.JFrame {
             // Once its reflected in either genre playlist we can removed it from the liked songs JList
             likedSongDisplay.removeElement(last.toString());
         }
+        
+        // Update the playlist based on user action
+        updateSongLabel();
     }//GEN-LAST:event_addSongsGenreBtnActionPerformed
 
     private void showSizeLikedListBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showSizeLikedListBtnActionPerformed
@@ -561,6 +582,9 @@ public class GUIClient extends javax.swing.JFrame {
         if(!genreADisplay.isEmpty()){
             genreADisplay.removeElementAt(genreADisplay.getSize() - 1);
         }
+        
+        // Update the playlist based on user action
+        updateSongLabel();
     }//GEN-LAST:event_deleteGenreABtnActionPerformed
 
     private void deleteGenreBBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteGenreBBtnActionPerformed
@@ -572,6 +596,9 @@ public class GUIClient extends javax.swing.JFrame {
         if(!genreBDisplay.isEmpty()){
             genreBDisplay.removeElementAt(genreBDisplay.getSize() - 1);
         }
+        
+        // Update the playlist based on user action
+        updateSongLabel();
     }//GEN-LAST:event_deleteGenreBBtnActionPerformed
 
     private void showSizeGenreABtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showSizeGenreABtnActionPerformed
@@ -615,6 +642,9 @@ public class GUIClient extends javax.swing.JFrame {
             // Move to the next playlist 
             node = node.getNext();
         }
+        
+        // Update the playlist based on user action
+        updateSongLabel();
     }//GEN-LAST:event_moveTopGenreABtnActionPerformed
 
     private void moveTopGenreBBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveTopGenreBBtnActionPerformed
@@ -632,6 +662,9 @@ public class GUIClient extends javax.swing.JFrame {
             // Move to the next node if node next is not null 
             node = node.getNext();
         }
+        
+        // Update the playlist based on user action
+        updateSongLabel();
     }//GEN-LAST:event_moveTopGenreBBtnActionPerformed
 
     private void moveBotoomGenreABtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveBotoomGenreABtnActionPerformed
@@ -649,8 +682,36 @@ public class GUIClient extends javax.swing.JFrame {
             // Move to the next node if node next is not null 
             node = node.getNext();
         }
+        
+        // Update the playlist based on user action
+        updateSongLabel();
     }//GEN-LAST:event_moveBotoomGenreABtnActionPerformed
 
+    private void moveBotoomGenreBBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveBotoomGenreBBtnActionPerformed
+        // Manipulate the DLL to move the top elemnt to the bottom
+        genreBPlaylist.moveToBottom();
+        
+        // Clear the content of the JList
+        genreBDisplay.clear();
+        
+        Node node = genreBPlaylist.getHead();
+        // Iterate over the DLL
+        while (node != null) {
+            // Add the song to the playlist JList
+            genreBDisplay.addElement(node.getSong().toString());
+            // Move to the next node if node next is not null 
+            node = node.getNext();
+        }
+        // Update the playlist based on user action
+        updateSongLabel();
+    }//GEN-LAST:event_moveBotoomGenreBBtnActionPerformed
+
+    // This fucntion is responsible for updating the playlist labels that show current and next songs inline
+    public void updateSongLabel(){
+        songPlayingLabelGenreA.setText(genreAPlaylist.getCurrentAndNextSong());
+        songPlayingLabelGenreB.setText(genreBPlaylist.getCurrentAndNextSong());
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addSongBtn;
     private javax.swing.JButton addSongsGenreBtn;
@@ -687,5 +748,7 @@ public class GUIClient extends javax.swing.JFrame {
     private javax.swing.JButton showSizeGenreABtn;
     private javax.swing.JButton showSizeGenreBBtn;
     private javax.swing.JButton showSizeLikedListBtn;
+    private javax.swing.JLabel songPlayingLabelGenreA;
+    private javax.swing.JLabel songPlayingLabelGenreB;
     // End of variables declaration//GEN-END:variables
 }

@@ -185,6 +185,10 @@ public class GenrePlaylist implements AppMang {
 
     @Override
     public String getCurrentAndNextSong() {
+        // This logic is for check wether the nodes are not empty and updating accordingly
+        // For example if the head and the next pointer is not empty we can display the First song and next song
+        // Then if only the head is not empty only show one song
+        // Otherwise there is nothing to play
         if(head != null && head.next != null){
             return "Now playing: " + head.song.getTitle() + " by " + head.song.getArtist() + " -  Next playing: " + head.next.song.getTitle() + " by " + head.next.song.getArtist();
         } else if(head != null){
