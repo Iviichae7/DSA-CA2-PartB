@@ -11,4 +11,7 @@ public interface AppMang {
     String displaySongs();
     int getSongCount();
     void deleteLastSong();
+    Song search(String artistName);
+    void moveToTop();
+    void moveToBottom();
 }

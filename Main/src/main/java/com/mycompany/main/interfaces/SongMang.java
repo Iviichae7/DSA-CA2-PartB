@@ -11,4 +11,6 @@ public interface SongMang {
     Song pop();
     int size();
     boolean isEmpty();
+    String displaySongs();
+    int getSongCount();
 }
