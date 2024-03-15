@@ -73,9 +73,31 @@ public class GenrePlaylist implements AppMang {
     public int getSongCount() {
         return size;
     }
-
+    @Override
     public void deleteLastSong() {
-
+        // Checking first if the dll is empty
+        if(head == null){
+            return;
+        }
+        
+        // Checking if the next node is empty
+        if(head.next == null){
+            // If it is then the dll is going to be empty
+            head = null;
+            size--;
+            return;
+        }
+        
+        // Two basic cases done
+        // Now we need to iterate over the dll if there are more than two
+        // Assigning the head to a temp node
+        Node node = head;
+        while(node.next.next != null){
+            node = node.next;
+        }
+        // When we find second last node we can safely delete it
+        node.next = null;
+        size--;
     }
 
     public Song search(String artistName) {
@@ -93,5 +115,43 @@ public class GenrePlaylist implements AppMang {
             node = node.next;
         }
         return null;
+    }
+    
+    public void moveToTop() {
+        // Checking first if the head is empty or the node.next is empty - if this is the case then there is nothing to do
+        if (head == null || head.next == null) {
+            return;
+        }
+
+        // Then we need to find the last node and 2nd last
+        Node lastNode = head;
+        
+        Node secondToLast = null;
+        
+        // Go over the DLL as long as the last node next is not empty
+        while (lastNode.next != null) {
+            // Then we update the secondToLast to the node before moving forward making sure the secondToLast points to the node before last
+            secondToLast = lastNode;
+            lastNode = lastNode.next;
+        }
+
+        // Then we are removing the last node and updating 2nd last next pointer
+        secondToLast.next = null;
+
+        // Then we need to make sure last node prev pointer is pointing at nothing
+        lastNode.prev = null;
+
+        // Then last node next ref is the head
+        lastNode.next = head;
+
+        // Then the previous head sould point to the last node
+        head.prev = lastNode;
+
+        // Then the head points to the last node
+        head = lastNode;
+    }
+    
+    public Node getHead(){
+        return this.head;
     }
 }
