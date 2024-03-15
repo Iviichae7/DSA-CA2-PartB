@@ -10,11 +10,13 @@ public class GenrePlaylist implements AppMang {
     private Node head;
     private int size;
     private String genre;
+    private boolean repeat;
 
     public GenrePlaylist(String genre) {
         this.head = null;
         this.size = 0;
         this.genre = genre;
+        this.repeat = false;
     }
     public String getGenre() {
         return this.genre;
@@ -24,6 +26,14 @@ public class GenrePlaylist implements AppMang {
         return this.head;
     }
 
+    public void toggleRepeat(){
+        this.repeat = !this.repeat;
+    }
+    
+    public boolean isRepeat(){
+        return this.repeat;
+    }
+    
     @Override
     public void addSong(Song song) {
 
@@ -186,15 +196,21 @@ public class GenrePlaylist implements AppMang {
     @Override
     public String getCurrentAndNextSong() {
         // This logic is for check wether the nodes are not empty and updating accordingly
-        // For example if the head and the next pointer is not empty we can display the First song and next song
+        // For example if the head is empty then head and the next pointer is not empty we can display the frst song and next song
         // Then if only the head is not empty only show one song
         // Otherwise there is nothing to play
-        if(head != null && head.next != null){
-            return "Now playing: " + head.song.getTitle() + " by " + head.song.getArtist() + " -  Next playing: " + head.next.song.getTitle() + " by " + head.next.song.getArtist();
-        } else if(head != null){
-            return "Now playing: " + head.song.getTitle() + " by " + head.song.getArtist();
-        } else {
+
+        if (head == null) {
             return "No songs in the playlist.";
+        // Checking if the repeat mode is off
+        } else if (!repeat) {
+            if (head.next != null) {
+                return "Now playing: " + head.song.getTitle() + " by " + head.song.getArtist() + " -  Next playing: " + head.next.song.getTitle() + " by " + head.next.song.getArtist();
+            } else {
+                return "Now playing: " + head.song.getTitle() + " by " + head.song.getArtist();
+            }
+        } else {
+            return "Now playing: " + head.song.getTitle() + " by " + head.song.getArtist();
         }
     }
 }
