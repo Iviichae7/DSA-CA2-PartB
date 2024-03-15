@@ -19,6 +19,10 @@ public class GenrePlaylist implements AppMang {
     public String getGenre() {
         return this.genre;
     }
+        
+    public Node getHead(){
+        return this.head;
+    }
 
     @Override
     public void addSong(Song song) {
@@ -99,7 +103,8 @@ public class GenrePlaylist implements AppMang {
         node.next = null;
         size--;
     }
-
+    
+    @Override
     public Song search(String artistName) {
         // Point new node to the head
         Node node = head;
@@ -117,6 +122,7 @@ public class GenrePlaylist implements AppMang {
         return null;
     }
     
+    @Override
     public void moveToTop() {
         // Checking first if the head is empty or the node.next is empty - if this is the case then there is nothing to do
         if (head == null || head.next == null) {
@@ -150,8 +156,30 @@ public class GenrePlaylist implements AppMang {
         // Then the head points to the last node
         head = lastNode;
     }
-    
-    public Node getHead(){
-        return this.head;
+
+    @Override
+    public void moveToBottom() {
+        // Checking first if the head is empty or the node.next is empty - if this is the case then there is nothing to do
+        if (head == null || head.next == null) {
+            return;
+        }
+        
+        // Start from the head
+        Node node = head;
+        
+        // Save the next pointer as the new head
+        head = head.next;
+        
+        // Go over the DLL as long as the last node next is not empty
+        Node last = head;
+        while (last.next != null) {
+            last = last.next;
+        }
+        
+        // Save the next node of the last to the saved head node
+        last.next = node;
+        
+        // Then we need to save the next pointer of the saved head node to nothing
+        node.next = null;
     }
 }
