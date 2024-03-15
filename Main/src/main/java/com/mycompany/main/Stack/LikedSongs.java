@@ -13,7 +13,7 @@ import com.mycompany.main.interfaces.AppMang;
  *
  * @author Administrator
  */
-public class LikedSongs implements AppMang, SongMang {
+public class LikedSongs implements SongMang {
     
     // Javas prebuilt stack
     private Stack<Song> songs = new Stack<>();
@@ -60,10 +60,5 @@ public class LikedSongs implements AppMang, SongMang {
     @Override
     public int size() {
         return size;
-    }
-
-    @Override
-    public void deleteLastSong() {
-        return;
     }
 }
