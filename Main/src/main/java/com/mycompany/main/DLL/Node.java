@@ -21,4 +21,12 @@ public class Node {
         this.prev = null;
         this.next = null;
     }
+    
+    public Song getSong(){
+        return song;
+    }
+    
+    public Node getNext(){
+        return next;
+    }
 }
