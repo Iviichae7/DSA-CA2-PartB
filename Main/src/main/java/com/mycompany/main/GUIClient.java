@@ -3,6 +3,7 @@ package com.mycompany.main;
 import com.mycompany.main.DLL.GenrePlaylist;
 import com.mycompany.main.DLL.Node;
 import com.mycompany.main.Stack.LikedSongs;
+import java.awt.Color;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -51,6 +52,9 @@ public class GUIClient extends javax.swing.JFrame {
         searchInputGenreB.setVisible(false);
         showSizeGenreABtn.setVisible(false);
         displayGenreBBtn.setVisible(false);
+        genreAOnRepeat.setVisible(false);
+        genreBOnRepeat.setVisible(false);
+
 
         likedSongsList.setModel(likedSongDisplay);
         genreAdisplay.setModel(genreADisplay);
@@ -99,6 +103,8 @@ public class GUIClient extends javax.swing.JFrame {
         displayGenreBBtn = new javax.swing.JButton();
         songPlayingLabelGenreA = new javax.swing.JLabel();
         songPlayingLabelGenreB = new javax.swing.JLabel();
+        genreBOnRepeat = new javax.swing.JCheckBox();
+        genreAOnRepeat = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,7 +116,7 @@ public class GUIClient extends javax.swing.JFrame {
         mainHeader.setForeground(new java.awt.Color(0, 0, 0));
         mainHeader.setText("Music Application");
         mainPanel.add(mainHeader);
-        mainHeader.setBounds(278, 20, 302, 48);
+        mainHeader.setBounds(280, 0, 302, 40);
 
         createPlaylistBtn.setBackground(new java.awt.Color(0, 0, 0));
         createPlaylistBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -125,7 +131,7 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
         mainPanel.add(createPlaylistBtn);
-        createPlaylistBtn.setBounds(308, 80, 230, 50);
+        createPlaylistBtn.setBounds(310, 50, 230, 50);
 
         likeSongsPanel.setBackground(new java.awt.Color(204, 204, 204));
         likeSongsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add Song:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -199,7 +205,7 @@ public class GUIClient extends javax.swing.JFrame {
         );
 
         mainPanel.add(likeSongsPanel);
-        likeSongsPanel.setBounds(60, 140, 680, 131);
+        likeSongsPanel.setBounds(60, 110, 680, 131);
 
         likedSongsList.setBackground(new java.awt.Color(204, 204, 204));
         likedSongsList.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Liked Songs Playlist", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -207,7 +213,7 @@ public class GUIClient extends javax.swing.JFrame {
         likedSongsJList.setViewportView(likedSongsList);
 
         mainPanel.add(likedSongsJList);
-        likedSongsJList.setBounds(60, 291, 680, 110);
+        likedSongsJList.setBounds(60, 260, 680, 110);
 
         addSongsGenreBtn.setBackground(new java.awt.Color(0, 0, 0));
         addSongsGenreBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -220,7 +226,7 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
         mainPanel.add(addSongsGenreBtn);
-        addSongsGenreBtn.setBounds(589, 420, 150, 22);
+        addSongsGenreBtn.setBounds(590, 390, 150, 22);
 
         genreBdisplay.setBackground(new java.awt.Color(204, 204, 204));
         genreBdisplay.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Genre B (Rap)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -228,7 +234,7 @@ public class GUIClient extends javax.swing.JFrame {
         genreBPlaylistJList.setViewportView(genreBdisplay);
 
         mainPanel.add(genreBPlaylistJList);
-        genreBPlaylistJList.setBounds(60, 670, 680, 130);
+        genreBPlaylistJList.setBounds(60, 660, 680, 130);
 
         genreAdisplay.setBackground(new java.awt.Color(204, 204, 204));
         genreAdisplay.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Genre A (Pop)", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -236,7 +242,7 @@ public class GUIClient extends javax.swing.JFrame {
         genreAPlaylistJList.setViewportView(genreAdisplay);
 
         mainPanel.add(genreAPlaylistJList);
-        genreAPlaylistJList.setBounds(60, 461, 680, 130);
+        genreAPlaylistJList.setBounds(60, 430, 680, 130);
 
         moveBotoomGenreABtn.setBackground(new java.awt.Color(0, 0, 0));
         moveBotoomGenreABtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -251,7 +257,7 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
         mainPanel.add(moveBotoomGenreABtn);
-        moveBotoomGenreABtn.setBounds(640, 630, 100, 22);
+        moveBotoomGenreABtn.setBounds(640, 600, 100, 22);
 
         searchGenreABtn.setBackground(new java.awt.Color(0, 0, 0));
         searchGenreABtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -264,7 +270,7 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
         mainPanel.add(searchGenreABtn);
-        searchGenreABtn.setBounds(550, 600, 80, 22);
+        searchGenreABtn.setBounds(550, 570, 80, 22);
 
         deleteGenreABtn.setBackground(new java.awt.Color(0, 0, 0));
         deleteGenreABtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -277,7 +283,7 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
         mainPanel.add(deleteGenreABtn);
-        deleteGenreABtn.setBounds(550, 630, 80, 22);
+        deleteGenreABtn.setBounds(550, 600, 80, 22);
 
         moveTopGenreABtn.setBackground(new java.awt.Color(0, 0, 0));
         moveTopGenreABtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -290,7 +296,7 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
         mainPanel.add(moveTopGenreABtn);
-        moveTopGenreABtn.setBounds(640, 600, 100, 22);
+        moveTopGenreABtn.setBounds(640, 570, 100, 22);
 
         showSizeLikedListBtn.setBackground(new java.awt.Color(0, 0, 0));
         showSizeLikedListBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -303,7 +309,7 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
         mainPanel.add(showSizeLikedListBtn);
-        showSizeLikedListBtn.setBounds(60, 420, 90, 22);
+        showSizeLikedListBtn.setBounds(60, 390, 90, 22);
 
         displayGenreABtn.setBackground(new java.awt.Color(0, 0, 0));
         displayGenreABtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -316,7 +322,7 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
         mainPanel.add(displayGenreABtn);
-        displayGenreABtn.setBounds(160, 600, 90, 22);
+        displayGenreABtn.setBounds(160, 570, 90, 22);
 
         moveBotoomGenreBBtn.setBackground(new java.awt.Color(0, 0, 0));
         moveBotoomGenreBBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -329,7 +335,7 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
         mainPanel.add(moveBotoomGenreBBtn);
-        moveBotoomGenreBBtn.setBounds(640, 840, 100, 22);
+        moveBotoomGenreBBtn.setBounds(640, 830, 100, 22);
 
         searchGenreBBtn.setBackground(new java.awt.Color(0, 0, 0));
         searchGenreBBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -342,7 +348,7 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
         mainPanel.add(searchGenreBBtn);
-        searchGenreBBtn.setBounds(550, 810, 80, 22);
+        searchGenreBBtn.setBounds(550, 800, 80, 22);
 
         deleteGenreBBtn.setBackground(new java.awt.Color(0, 0, 0));
         deleteGenreBBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -355,7 +361,7 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
         mainPanel.add(deleteGenreBBtn);
-        deleteGenreBBtn.setBounds(550, 840, 80, 22);
+        deleteGenreBBtn.setBounds(550, 830, 80, 22);
 
         moveTopGenreBBtn.setBackground(new java.awt.Color(0, 0, 0));
         moveTopGenreBBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -368,7 +374,7 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
         mainPanel.add(moveTopGenreBBtn);
-        moveTopGenreBBtn.setBounds(640, 810, 100, 22);
+        moveTopGenreBBtn.setBounds(640, 800, 100, 22);
 
         showSizeGenreBBtn.setBackground(new java.awt.Color(0, 0, 0));
         showSizeGenreBBtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -381,25 +387,25 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
         mainPanel.add(showSizeGenreBBtn);
-        showSizeGenreBBtn.setBounds(60, 810, 90, 22);
+        showSizeGenreBBtn.setBounds(60, 800, 90, 22);
 
         searchArtistLabelGenreA.setForeground(new java.awt.Color(0, 0, 0));
         searchArtistLabelGenreA.setText("Search by Artist:");
         mainPanel.add(searchArtistLabelGenreA);
-        searchArtistLabelGenreA.setBounds(300, 600, 94, 16);
+        searchArtistLabelGenreA.setBounds(300, 570, 94, 16);
 
         searchInputGenreA.setBackground(new java.awt.Color(204, 204, 204));
         mainPanel.add(searchInputGenreA);
-        searchInputGenreA.setBounds(400, 600, 131, 22);
+        searchInputGenreA.setBounds(400, 570, 131, 22);
 
         searchArtistLabelGenreB.setForeground(new java.awt.Color(0, 0, 0));
         searchArtistLabelGenreB.setText("Search by Artist:");
         mainPanel.add(searchArtistLabelGenreB);
-        searchArtistLabelGenreB.setBounds(300, 810, 94, 16);
+        searchArtistLabelGenreB.setBounds(300, 800, 94, 16);
 
         searchInputGenreB.setBackground(new java.awt.Color(204, 204, 204));
         mainPanel.add(searchInputGenreB);
-        searchInputGenreB.setBounds(400, 810, 131, 22);
+        searchInputGenreB.setBounds(400, 800, 131, 22);
 
         showSizeGenreABtn.setBackground(new java.awt.Color(0, 0, 0));
         showSizeGenreABtn.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -412,7 +418,7 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
         mainPanel.add(showSizeGenreABtn);
-        showSizeGenreABtn.setBounds(60, 600, 90, 22);
+        showSizeGenreABtn.setBounds(60, 570, 90, 22);
 
         displayGenreBBtn.setBackground(new java.awt.Color(0, 0, 0));
         displayGenreBBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -423,21 +429,47 @@ public class GUIClient extends javax.swing.JFrame {
             }
         });
         mainPanel.add(displayGenreBBtn);
-        displayGenreBBtn.setBounds(160, 810, 90, 23);
+        displayGenreBBtn.setBounds(160, 800, 90, 23);
 
         songPlayingLabelGenreA.setForeground(new java.awt.Color(0, 204, 51));
         mainPanel.add(songPlayingLabelGenreA);
-        songPlayingLabelGenreA.setBounds(60, 640, 470, 20);
+        songPlayingLabelGenreA.setBounds(60, 600, 470, 20);
 
         songPlayingLabelGenreB.setForeground(new java.awt.Color(0, 204, 0));
         mainPanel.add(songPlayingLabelGenreB);
-        songPlayingLabelGenreB.setBounds(60, 850, 470, 20);
+        songPlayingLabelGenreB.setBounds(60, 830, 470, 20);
+
+        genreBOnRepeat.setForeground(new java.awt.Color(0, 0, 0));
+        genreBOnRepeat.setText("Playlist on Repeat");
+        genreBOnRepeat.setContentAreaFilled(false);
+        genreBOnRepeat.setFocusPainted(false);
+        genreBOnRepeat.setFocusable(false);
+        genreBOnRepeat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genreBOnRepeatActionPerformed(evt);
+            }
+        });
+        mainPanel.add(genreBOnRepeat);
+        genreBOnRepeat.setBounds(60, 860, 140, 20);
+
+        genreAOnRepeat.setForeground(new java.awt.Color(0, 0, 0));
+        genreAOnRepeat.setText("Playlist on Repeat");
+        genreAOnRepeat.setContentAreaFilled(false);
+        genreAOnRepeat.setFocusPainted(false);
+        genreAOnRepeat.setFocusable(false);
+        genreAOnRepeat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genreAOnRepeatActionPerformed(evt);
+            }
+        });
+        mainPanel.add(genreAOnRepeat);
+        genreAOnRepeat.setBounds(60, 630, 140, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -470,6 +502,8 @@ public class GUIClient extends javax.swing.JFrame {
         searchArtistLabelGenreA.setVisible(true);
         showSizeGenreABtn.setVisible(true);
         displayGenreBBtn.setVisible(true);
+        genreAOnRepeat.setVisible(true);
+        genreBOnRepeat.setVisible(true);
 
         songPlayingLabelGenreA.setText("No songs in the playlist.");
         songPlayingLabelGenreB.setText("No songs in the playlist.");
@@ -706,6 +740,32 @@ public class GUIClient extends javax.swing.JFrame {
         updateSongLabel();
     }//GEN-LAST:event_moveBotoomGenreBBtnActionPerformed
 
+    private void genreAOnRepeatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genreAOnRepeatActionPerformed
+        
+        genreAPlaylist.toggleRepeat();
+        
+        if(genreAPlaylist.isRepeat()){
+            songPlayingLabelGenreA.setText("Playlist is on repeat - " + genreAPlaylist.getCurrentAndNextSong());
+            songPlayingLabelGenreA.setForeground(Color.red);
+        }else {
+            songPlayingLabelGenreA.setText(genreAPlaylist.getCurrentAndNextSong());
+            songPlayingLabelGenreA.setForeground(new Color(0, 204, 51));
+        }
+        
+    }//GEN-LAST:event_genreAOnRepeatActionPerformed
+
+    private void genreBOnRepeatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genreBOnRepeatActionPerformed
+        genreBPlaylist.toggleRepeat();
+        
+        if(genreBPlaylist.isRepeat()){
+            songPlayingLabelGenreB.setText("Playlist is on repeat -  " + genreBPlaylist.getCurrentAndNextSong());
+            songPlayingLabelGenreB.setForeground(Color.red);
+        }else {
+            songPlayingLabelGenreB.setText(genreBPlaylist.getCurrentAndNextSong());
+            songPlayingLabelGenreB.setForeground(new Color(0, 204, 51));
+        }
+    }//GEN-LAST:event_genreBOnRepeatActionPerformed
+
     // This fucntion is responsible for updating the playlist labels that show current and next songs inline
     public void updateSongLabel(){
         songPlayingLabelGenreA.setText(genreAPlaylist.getCurrentAndNextSong());
@@ -726,8 +786,10 @@ public class GUIClient extends javax.swing.JFrame {
     private javax.swing.JButton deleteGenreBBtn;
     private javax.swing.JButton displayGenreABtn;
     private javax.swing.JButton displayGenreBBtn;
+    private javax.swing.JCheckBox genreAOnRepeat;
     private javax.swing.JScrollPane genreAPlaylistJList;
     private javax.swing.JList<String> genreAdisplay;
+    private javax.swing.JCheckBox genreBOnRepeat;
     private javax.swing.JScrollPane genreBPlaylistJList;
     private javax.swing.JList<String> genreBdisplay;
     private javax.swing.JPanel likeSongsPanel;
