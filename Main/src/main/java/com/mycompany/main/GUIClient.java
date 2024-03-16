@@ -54,6 +54,7 @@ public class GUIClient extends javax.swing.JFrame {
         displayGenreBBtn.setVisible(false);
         genreAOnRepeat.setVisible(false);
         genreBOnRepeat.setVisible(false);
+        displayLikedPlaylistBtn.setVisible(false);
 
 
         likedSongsList.setModel(likedSongDisplay);
@@ -105,6 +106,7 @@ public class GUIClient extends javax.swing.JFrame {
         songPlayingLabelGenreB = new javax.swing.JLabel();
         genreBOnRepeat = new javax.swing.JCheckBox();
         genreAOnRepeat = new javax.swing.JCheckBox();
+        displayLikedPlaylistBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,6 +158,12 @@ public class GUIClient extends javax.swing.JFrame {
         addSongBtn.setForeground(new java.awt.Color(255, 255, 255));
         addSongBtn.setText("Add Song");
         addSongBtn.setBorderPainted(false);
+        addSongBtn.setDefaultCapable(false);
+        addSongBtn.setFocusPainted(false);
+        addSongBtn.setFocusable(false);
+        addSongBtn.setRequestFocusEnabled(false);
+        addSongBtn.setRolloverEnabled(false);
+        addSongBtn.setVerifyInputWhenFocusTarget(false);
         addSongBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addSongBtnActionPerformed(evt);
@@ -220,6 +228,8 @@ public class GUIClient extends javax.swing.JFrame {
         addSongsGenreBtn.setForeground(new java.awt.Color(255, 255, 255));
         addSongsGenreBtn.setText("Add Song to Genre");
         addSongsGenreBtn.setBorderPainted(false);
+        addSongsGenreBtn.setFocusPainted(false);
+        addSongsGenreBtn.setFocusable(false);
         addSongsGenreBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addSongsGenreBtnActionPerformed(evt);
@@ -250,6 +260,7 @@ public class GUIClient extends javax.swing.JFrame {
         moveBotoomGenreABtn.setText("MoveBottom");
         moveBotoomGenreABtn.setBorderPainted(false);
         moveBotoomGenreABtn.setDefaultCapable(false);
+        moveBotoomGenreABtn.setFocusPainted(false);
         moveBotoomGenreABtn.setFocusable(false);
         moveBotoomGenreABtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,6 +275,8 @@ public class GUIClient extends javax.swing.JFrame {
         searchGenreABtn.setForeground(new java.awt.Color(255, 255, 255));
         searchGenreABtn.setText("Search");
         searchGenreABtn.setBorderPainted(false);
+        searchGenreABtn.setFocusPainted(false);
+        searchGenreABtn.setFocusable(false);
         searchGenreABtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchGenreABtnActionPerformed(evt);
@@ -277,6 +290,8 @@ public class GUIClient extends javax.swing.JFrame {
         deleteGenreABtn.setForeground(new java.awt.Color(255, 255, 255));
         deleteGenreABtn.setText("Delete");
         deleteGenreABtn.setBorderPainted(false);
+        deleteGenreABtn.setFocusPainted(false);
+        deleteGenreABtn.setFocusable(false);
         deleteGenreABtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteGenreABtnActionPerformed(evt);
@@ -290,6 +305,8 @@ public class GUIClient extends javax.swing.JFrame {
         moveTopGenreABtn.setForeground(new java.awt.Color(255, 255, 255));
         moveTopGenreABtn.setText("MoveTop");
         moveTopGenreABtn.setBorderPainted(false);
+        moveTopGenreABtn.setFocusPainted(false);
+        moveTopGenreABtn.setFocusable(false);
         moveTopGenreABtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 moveTopGenreABtnActionPerformed(evt);
@@ -303,6 +320,8 @@ public class GUIClient extends javax.swing.JFrame {
         showSizeLikedListBtn.setForeground(new java.awt.Color(255, 255, 255));
         showSizeLikedListBtn.setText("Show Size");
         showSizeLikedListBtn.setBorderPainted(false);
+        showSizeLikedListBtn.setFocusPainted(false);
+        showSizeLikedListBtn.setFocusable(false);
         showSizeLikedListBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showSizeLikedListBtnActionPerformed(evt);
@@ -316,6 +335,8 @@ public class GUIClient extends javax.swing.JFrame {
         displayGenreABtn.setForeground(new java.awt.Color(255, 255, 255));
         displayGenreABtn.setText("Display");
         displayGenreABtn.setBorderPainted(false);
+        displayGenreABtn.setFocusPainted(false);
+        displayGenreABtn.setFocusable(false);
         displayGenreABtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 displayGenreABtnActionPerformed(evt);
@@ -329,6 +350,8 @@ public class GUIClient extends javax.swing.JFrame {
         moveBotoomGenreBBtn.setForeground(new java.awt.Color(255, 255, 255));
         moveBotoomGenreBBtn.setText("MoveBottom");
         moveBotoomGenreBBtn.setBorderPainted(false);
+        moveBotoomGenreBBtn.setFocusPainted(false);
+        moveBotoomGenreBBtn.setFocusable(false);
         moveBotoomGenreBBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 moveBotoomGenreBBtnActionPerformed(evt);
@@ -342,6 +365,8 @@ public class GUIClient extends javax.swing.JFrame {
         searchGenreBBtn.setForeground(new java.awt.Color(255, 255, 255));
         searchGenreBBtn.setText("Search");
         searchGenreBBtn.setBorderPainted(false);
+        searchGenreBBtn.setFocusPainted(false);
+        searchGenreBBtn.setFocusable(false);
         searchGenreBBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchGenreBBtnActionPerformed(evt);
@@ -355,6 +380,8 @@ public class GUIClient extends javax.swing.JFrame {
         deleteGenreBBtn.setForeground(new java.awt.Color(255, 255, 255));
         deleteGenreBBtn.setText("Delete");
         deleteGenreBBtn.setBorderPainted(false);
+        deleteGenreBBtn.setFocusPainted(false);
+        deleteGenreBBtn.setFocusable(false);
         deleteGenreBBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteGenreBBtnActionPerformed(evt);
@@ -368,6 +395,8 @@ public class GUIClient extends javax.swing.JFrame {
         moveTopGenreBBtn.setForeground(new java.awt.Color(255, 255, 255));
         moveTopGenreBBtn.setText("MoveTop");
         moveTopGenreBBtn.setBorderPainted(false);
+        moveTopGenreBBtn.setFocusPainted(false);
+        moveTopGenreBBtn.setFocusable(false);
         moveTopGenreBBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 moveTopGenreBBtnActionPerformed(evt);
@@ -381,6 +410,8 @@ public class GUIClient extends javax.swing.JFrame {
         showSizeGenreBBtn.setForeground(new java.awt.Color(255, 255, 255));
         showSizeGenreBBtn.setText("Show Size");
         showSizeGenreBBtn.setBorderPainted(false);
+        showSizeGenreBBtn.setFocusPainted(false);
+        showSizeGenreBBtn.setFocusable(false);
         showSizeGenreBBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showSizeGenreBBtnActionPerformed(evt);
@@ -412,6 +443,8 @@ public class GUIClient extends javax.swing.JFrame {
         showSizeGenreABtn.setForeground(new java.awt.Color(255, 255, 255));
         showSizeGenreABtn.setText("Show Size");
         showSizeGenreABtn.setBorderPainted(false);
+        showSizeGenreABtn.setFocusPainted(false);
+        showSizeGenreABtn.setFocusable(false);
         showSizeGenreABtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showSizeGenreABtnActionPerformed(evt);
@@ -423,6 +456,9 @@ public class GUIClient extends javax.swing.JFrame {
         displayGenreBBtn.setBackground(new java.awt.Color(0, 0, 0));
         displayGenreBBtn.setForeground(new java.awt.Color(255, 255, 255));
         displayGenreBBtn.setText("Display");
+        displayGenreBBtn.setBorderPainted(false);
+        displayGenreBBtn.setFocusPainted(false);
+        displayGenreBBtn.setFocusable(false);
         displayGenreBBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 displayGenreBBtnActionPerformed(evt);
@@ -465,6 +501,17 @@ public class GUIClient extends javax.swing.JFrame {
         mainPanel.add(genreAOnRepeat);
         genreAOnRepeat.setBounds(60, 630, 140, 20);
 
+        displayLikedPlaylistBtn.setBackground(new java.awt.Color(0, 0, 0));
+        displayLikedPlaylistBtn.setForeground(new java.awt.Color(255, 255, 255));
+        displayLikedPlaylistBtn.setText("Display");
+        displayLikedPlaylistBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayLikedPlaylistBtnActionPerformed(evt);
+            }
+        });
+        mainPanel.add(displayLikedPlaylistBtn);
+        displayLikedPlaylistBtn.setBounds(160, 390, 90, 23);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -504,6 +551,7 @@ public class GUIClient extends javax.swing.JFrame {
         displayGenreBBtn.setVisible(true);
         genreAOnRepeat.setVisible(true);
         genreBOnRepeat.setVisible(true);
+        displayLikedPlaylistBtn.setVisible(true);
 
         songPlayingLabelGenreA.setText("No songs in the playlist.");
         songPlayingLabelGenreB.setText("No songs in the playlist.");
@@ -518,6 +566,18 @@ public class GUIClient extends javax.swing.JFrame {
         
         if(artistName.isEmpty() || songTitle.isEmpty() || genre == null || genre.isEmpty()){
             JOptionPane.showMessageDialog(null, "Nothing to add to the Stack!");
+            return;
+        }
+        
+        // Basic validation for artist name, should contain more than 3 characters
+        if(artistName.length() < 3){
+            JOptionPane.showMessageDialog(null, "Invalid name, should contain a min of 3 characters!");
+            return;
+        }
+        
+        // Basic validation for title, should contain more than 3 characters
+        if(songTitle.length() < 3){
+            JOptionPane.showMessageDialog(null, "Invalid title, should contain a min of 3 characters!");
             return;
         }
         
@@ -615,6 +675,8 @@ public class GUIClient extends javax.swing.JFrame {
         // First we check if its empty or not
         if(!genreADisplay.isEmpty()){
             genreADisplay.removeElementAt(genreADisplay.getSize() - 1);
+        } else {
+            JOptionPane.showMessageDialog(null, "Nothing to Delete!");
         }
         
         // Update the playlist based on user action
@@ -629,6 +691,8 @@ public class GUIClient extends javax.swing.JFrame {
         // First we check if its empty or not
         if(!genreBDisplay.isEmpty()){
             genreBDisplay.removeElementAt(genreBDisplay.getSize() - 1);
+        }else {
+            JOptionPane.showMessageDialog(null, "Nothing to Delete!");
         }
         
         // Update the playlist based on user action
@@ -643,15 +707,28 @@ public class GUIClient extends javax.swing.JFrame {
     }//GEN-LAST:event_showSizeGenreABtnActionPerformed
 
     private void displayGenreABtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayGenreABtnActionPerformed
+        // Saves the Jlists elements by iterating over it
         String songs = genreAPlaylist.displaySongs();
         
-        JOptionPane.showMessageDialog(null, songs);
+        if(songs != null && !songs.isEmpty()){
+            // Displays the elements in JOptionPane
+            JOptionPane.showMessageDialog(null, songs);
+        }else {
+            JOptionPane.showMessageDialog(null, "Nothing to Display!");
+        }
+        
     }//GEN-LAST:event_displayGenreABtnActionPerformed
 
     private void displayGenreBBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayGenreBBtnActionPerformed
+        // Saves the Jlists elements by iterating over it
         String songs = genreBPlaylist.displaySongs();
         
-        JOptionPane.showMessageDialog(null, songs);
+        if(songs != null && !songs.isEmpty()){
+            // Displays the elements in JOptionPane
+            JOptionPane.showMessageDialog(null, songs);
+        }else {
+            JOptionPane.showMessageDialog(null, "Nothing to Display!");
+        }
     }//GEN-LAST:event_displayGenreBBtnActionPerformed
 
     private void showSizeGenreBBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showSizeGenreBBtnActionPerformed
@@ -661,6 +738,11 @@ public class GUIClient extends javax.swing.JFrame {
     }//GEN-LAST:event_showSizeGenreBBtnActionPerformed
 
     private void moveTopGenreABtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveTopGenreABtnActionPerformed
+        
+        if(genreADisplay.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Nothing to move!");
+            return;
+        }
         // Manipulate the DLL to move the last elemnt to the top
         genreAPlaylist.moveToTop();
 
@@ -682,6 +764,12 @@ public class GUIClient extends javax.swing.JFrame {
     }//GEN-LAST:event_moveTopGenreABtnActionPerformed
 
     private void moveTopGenreBBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveTopGenreBBtnActionPerformed
+        
+        if(genreADisplay.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Nothing to move!");
+            return;
+        }
+        
         // Manipulate the DLL to move the last elemnt to the top
         genreBPlaylist.moveToTop();
 
@@ -702,6 +790,12 @@ public class GUIClient extends javax.swing.JFrame {
     }//GEN-LAST:event_moveTopGenreBBtnActionPerformed
 
     private void moveBotoomGenreABtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveBotoomGenreABtnActionPerformed
+        
+        if(genreADisplay.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Nothing to move!");
+            return;
+        }
+
         // Manipulate the DLL to move the top elemnt to the bottom
         genreAPlaylist.moveToBottom();
         
@@ -722,6 +816,12 @@ public class GUIClient extends javax.swing.JFrame {
     }//GEN-LAST:event_moveBotoomGenreABtnActionPerformed
 
     private void moveBotoomGenreBBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveBotoomGenreBBtnActionPerformed
+        
+        if(genreADisplay.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Nothing to move!");
+            return;
+        }
+
         // Manipulate the DLL to move the top elemnt to the bottom
         genreBPlaylist.moveToBottom();
         
@@ -741,13 +841,15 @@ public class GUIClient extends javax.swing.JFrame {
     }//GEN-LAST:event_moveBotoomGenreBBtnActionPerformed
 
     private void genreAOnRepeatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genreAOnRepeatActionPerformed
-        
+        // A toggle for the Pop playlist
         genreAPlaylist.toggleRepeat();
         
+        // Checking wether the repeat is enabled and if it is then it updates the label and color
         if(genreAPlaylist.isRepeat()){
             songPlayingLabelGenreA.setText("Playlist is on repeat - " + genreAPlaylist.getCurrentAndNextSong());
             songPlayingLabelGenreA.setForeground(Color.red);
         }else {
+            // If not then it returns back to previous state
             songPlayingLabelGenreA.setText(genreAPlaylist.getCurrentAndNextSong());
             songPlayingLabelGenreA.setForeground(new Color(0, 204, 51));
         }
@@ -755,16 +857,31 @@ public class GUIClient extends javax.swing.JFrame {
     }//GEN-LAST:event_genreAOnRepeatActionPerformed
 
     private void genreBOnRepeatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genreBOnRepeatActionPerformed
+        // A toggle for the Rap playlist
         genreBPlaylist.toggleRepeat();
         
+        // Checking wether the repeat is enabled and if it is then it updates the label and color
         if(genreBPlaylist.isRepeat()){
             songPlayingLabelGenreB.setText("Playlist is on repeat -  " + genreBPlaylist.getCurrentAndNextSong());
             songPlayingLabelGenreB.setForeground(Color.red);
         }else {
+            // If not then it returns back to previous state
             songPlayingLabelGenreB.setText(genreBPlaylist.getCurrentAndNextSong());
             songPlayingLabelGenreB.setForeground(new Color(0, 204, 51));
         }
     }//GEN-LAST:event_genreBOnRepeatActionPerformed
+
+    private void displayLikedPlaylistBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayLikedPlaylistBtnActionPerformed
+        // Saves the Jlists elements by iterating over it
+        String songs = likedSongs.displaySongs();
+
+        if(songs != null && !songs.isEmpty()){
+            // Displays the elements in JOptionPane
+            JOptionPane.showMessageDialog(null, songs); 
+        } else {
+            JOptionPane.showMessageDialog(null, "Nothing to display!"); 
+        }
+    }//GEN-LAST:event_displayLikedPlaylistBtnActionPerformed
 
     // This fucntion is responsible for updating the playlist labels that show current and next songs inline
     public void updateSongLabel(){
@@ -786,6 +903,7 @@ public class GUIClient extends javax.swing.JFrame {
     private javax.swing.JButton deleteGenreBBtn;
     private javax.swing.JButton displayGenreABtn;
     private javax.swing.JButton displayGenreBBtn;
+    private javax.swing.JButton displayLikedPlaylistBtn;
     private javax.swing.JCheckBox genreAOnRepeat;
     private javax.swing.JScrollPane genreAPlaylistJList;
     private javax.swing.JList<String> genreAdisplay;
