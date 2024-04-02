@@ -570,14 +570,26 @@ public class GUIClient extends javax.swing.JFrame {
         }
         
         // Basic validation for artist name, should contain more than 3 characters
-        if(artistName.length() < 3){
-            JOptionPane.showMessageDialog(null, "Invalid name, should contain a min of 3 characters!");
+        if(artistName.length() < 3 || artistName.length() > 15){
+            JOptionPane.showMessageDialog(null, "Invalid name, should contain a min of 3 and max of 15 characters!");
             return;
         }
         
         // Basic validation for title, should contain more than 3 characters
-        if(songTitle.length() < 3){
-            JOptionPane.showMessageDialog(null, "Invalid title, should contain a min of 3 characters!");
+        if(songTitle.length() < 3 || songTitle.length() > 15){
+            JOptionPane.showMessageDialog(null, "Invalid title, should contain a min of 3 and max of 15 characters!");
+            return;
+        }
+        
+        // Check if the first character of the artist name is a digit
+        if(Character.isDigit(artistName.charAt(0))){
+            JOptionPane.showMessageDialog(null, "Invalid artist name, should not start with a number!");
+            return;
+        }
+
+        // Check if the first character of the song title is a digit
+        if(Character.isDigit(songTitle.charAt(0))){
+            JOptionPane.showMessageDialog(null, "Invalid song title, should not start with a number!");
             return;
         }
         
